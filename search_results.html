@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    {% if foods %}
+        <ul>
+            {% for food in foods %}
+                <li>
+                    <a href="{{ url_for('food_page', food_name=(food.name | replace(' ', '') | lower)) }}">
+                        {{ food.name }} - Price: {{ food.price }} - Restaurant: {{ food.restaurant_name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</body>
+</html>

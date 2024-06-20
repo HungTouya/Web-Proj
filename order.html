@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+</head>
+<body>
+    <h1>Order Summary</h1>
+    {% if orders %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Food Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Restaurant</th>
+                <th>Order Date</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.food_name }}</td>
+                <td>${{ order.price }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>{{ order.restaurant_name }}</td>
+                <td>{{ order.order_date }}</td>
+                <td>${{ order.price * order.quantity }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="5" align="right"><strong>Total Price:</strong></td>
+                <td>${{ total_price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Select Payment Method</h2>
+    <form method="post" action="/confirm_payment">
+        <label for="payment_method">Choose a payment method:</label>
+        <select id="payment_method" name="payment_method">
+            <option value="cash">Cash</option>
+            <option value="banking">Banking</option>
+        </select>
+        <br><br>
+        <button type="submit">Confirm Payment</button>
+    </form>
+
+    {% else %}
+    <p>No orders found.</p>
+    {% endif %}
+</body>
+</html>

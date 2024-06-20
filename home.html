@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Header section with cart and user links -->
+        <div class="row mt-4">
+            <div class="col">
+                <a href="/cart">
+                    <img src="/static/cart_image.png" alt="Cart" width="50" height="50">
+                </a>
+            </div>
+            <div class="col text-right">
+                <a href="/user">
+                    <img src="/static/user_image.png" alt="User" width="50" height="50">
+                </a>
+            </div>
+        </div>
+        
+        <!-- Welcome message -->
+        <h1 class="page-title mt-4">Welcome, {{ session['username'] }}</h1>
+        
+        <!-- Search form -->
+        <form action="/search" method="GET" class="mt-4 mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" name="query" placeholder="Search food...">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+    
+        <!-- Cards for food items -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="/static/food1.png" class="card-img-top" alt="Bun bo">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/bunbo.html" class="food-link">Bun bo</a></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="/static/food2.png" class="card-img-top" alt="Com tam">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/comtam.html" class="food-link">Com tam</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="/static/food3.png" class="card-img-top" alt="Banh mi">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/banhmi.html" class="food-link">Banh mi</a></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="/static/food4.png" class="card-img-top" alt="Xoi man">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/xoiman.html" class="food-link">Xoi man</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add more rows for other food items as needed -->
+    </div>
+</body>
+</html>

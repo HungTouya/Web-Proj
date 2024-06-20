@@ -1,0 +1,39 @@
+/* Styling for homepage */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.food-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.food-link:hover {
+    text-decoration: underline;
+}

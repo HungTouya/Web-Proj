@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bun Bo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .image-container {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+        }
+        .image-container img {
+            display: none;
+            width: 100%;
+        }
+        .image-container img.active {
+            display: block;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+    </style>
+    <script>
+        function changeImage(n) {
+            showImage(slideIndex += n);
+        }
+
+        function showImage(n) {
+            var images = document.querySelectorAll(".image-container img");
+            if (n >= images.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = images.length - 1; }
+            for (var i = 0; i < images.length; i++) {
+                images[i].classList.remove("active");
+            }
+            images[slideIndex].classList.add("active");
+        }
+
+        function increaseQuantity() {
+            let quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        }
+
+        function decreaseQuantity() {
+            let quantityInput = document.getElementById('quantity');
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        }
+
+        var slideIndex = 0;
+        document.addEventListener('DOMContentLoaded', function() {
+            showImage(slideIndex);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bun Bo</h1>
+
+        <!-- Image container with navigation arrows -->
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/bunbo_image1.jpg') }}" class="active" alt="Bun Bo Image 1">
+            <img src="{{ url_for('static', filename='images/bunbo_image2.jpg') }}" alt="Bun Bo Image 2">
+            <img src="{{ url_for('static', filename='images/bunbo_image3.jpg') }}" alt="Bun Bo Image 3">
+
+            <!-- Navigation arrows -->
+            <a class="prev" onclick="changeImage(-1)">&#10094; Previous</a>
+            <a class="next" onclick="changeImage(1)">Next &#10095;</a>
+        </div>
+
+        <p>Price: ${{ price }}</p>
+        <p>Restaurant: {{ restaurant }}</p>
+
+        <!-- Add to Cart and Buy Now buttons with quantity selector -->
+        <form action="{{ url_for('add_to_cart') }}" method="POST">
+            <input type="hidden" name="food_id" value="{{ food_id }}">
+            <label for="quantity">Quantity:</label>
+            <button type="button" onclick="decreaseQuantity()">-</button>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+            <button type="button" onclick="increaseQuantity()">+</button>
+            <br><br>
+            <button type="submit" name="action" value="add_to_cart" class="btn btn-primary">Add to Cart</button>
+            <button type="submit" name="action" value="buy_now" class="btn btn-success">Buy Now</button>
+        </form> 
+        
+    </div>
+</body>
+</html>
