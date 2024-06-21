@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chao long</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Chao long </h1>
+        
+        <!-- Image container with navigation arrows -->
+        <div class="image-container">
+            <!-- You can use placeholders or dynamically load images from a database -->
+            <img src="{{ url_for('static', filename='images/comtam_image1.jpg') }}" alt="Com tam Image 1">
+            <img src="{{ url_for('static', filename='images/comtam_image2.jpg') }}" alt="Com tam Image 2">
+            <img src="{{ url_for('static', filename='images/comtam_image3.jpg') }}" alt="Com tam Image 3">
+            
+            <!-- Navigation arrows -->
+            <a class="prev" onclick="prevImage()">&#10094; Previous</a>
+            <a class="next" onclick="nextImage()">Next &#10095;</a>
+        </div>
+
+        <!-- Script to handle image carousel -->
+        <script>
+            var slideIndex = 1;
+            showImage(slideIndex);
+            
+            function nextImage() {
+                showImage(slideIndex += 1);
+            }
+            
+            function prevImage() {
+                showImage(slideIndex -= 1);
+            }
+            
+            function showImage(n) {
+                var images = document.getElementsByTagName("img");
+                if (n > images.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = images.length }
+                for (var i = 0; i < images.length; i++) {
+                    images[i].style.display = "none";
+                }
+                images[slideIndex - 1].style.display = "block";
+            }
+        </script>
+    </div>
+    <p>Price: ${{ price }}</p>
+    <p>Restaurant: {{ restaurant }}</p>
+
+    <!-- Add to Cart and Buy Now buttons -->
+    <form action="/add_to_cart" method="POST">
+        <input type="hidden" name="food_id" value="{{ food_id }}">
+        <button type="submit" name="action" value="add_to_cart">Add to Cart</button>
+        <button type="submit" name="action" value="buy_now">Buy Now</button>
+    </form>
+</body>
+</html>
