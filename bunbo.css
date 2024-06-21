@@ -2,11 +2,14 @@
 body, html {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
+/* General styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
+    background-color: #ADD8E6; /* Light Blue */
+    color: #000000; /* Black text */
 }
 
 .container {
@@ -21,6 +24,8 @@ h1 {
     text-align: center;
     color: #333;
     margin-top: 0;
+    font-size: 2.5em;
+    font-weight: bold;
 }
 
 .image-container {
@@ -53,4 +58,47 @@ h1 {
 
 .next {
     right: 10px;
+}
+
+/* Header styles */
+header {
+    background-color: #FFFFFF; /* White */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main styles */
+main {
+    padding: 20px;
+}
+
+/* Footer styles */
+footer {
+    background-color: #FFFFFF; /* White */
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    font-size: 1em;
+}
+
+/* Button styles */
+.button {
+    background-color: #FFA500; /* Bright Orange */
+    color: #FFFFFF; /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #FF8C00; /* Darker Orange */
 }
