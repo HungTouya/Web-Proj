@@ -1,7 +1,14 @@
-/* Styling for homepage */
-body {
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+}
+
+body {
+    background-color: #ADD8E6; /* Light Blue */
+    color: #000000; /* Black text */
 }
 
 .container {
@@ -36,4 +43,48 @@ body {
 
 .food-link:hover {
     text-decoration: underline;
+}
+
+header {
+    background-color: #FFFFFF; 
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #FFFFFF; 
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    font-size: 1em;
+}
+
+.button {
+    background-color: #FFA500; 
+    color: #FFFFFF; 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #FF8C00; 
 }
